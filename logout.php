@@ -1,6 +1,6 @@
 <?php
-require_once('session.php');
-require_once('class.user.php');
+require_once('classes/session.class.php');
+require_once('classes/user.class.php');
 $user_logout = new USER();
 
 if($user_logout->is_loggedin()!="") {
