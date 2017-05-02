@@ -35,6 +35,7 @@ if (isset($_POST['login'])) {
             <a href="settings.php" class="mdl-layout__tab">Mijn account</a>
             <a href="books.php" class="mdl-layout__tab">Mijn boeken</a>
             <a href="booklist.php" class="mdl-layout__tab">Boek(en) huren</a>
+            <a href="addbook.php" class="mdl-layout__tab">Boek(en) toevoegen</a>
             <a href="contact.php" class="mdl-layout__tab">Contact</a>
             <div class="mdl-layout-spacer"></div>
             <a href="housekeeping/index.php" class="mdl-layout__tab" style="color: green;">Dashboard</a>
