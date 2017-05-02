@@ -48,22 +48,39 @@ if (isset($_POST['login'])) {
 <!--            <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem te kunnen gebruiken verzoek wij je <a href='settings.php'>hier</a> alles in te vullen.</span>-->
         </span>
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
-            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bname" >
-                    <label class="mdl-textfield__label" for="sample1">Boek naam...</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bautor" >
-                    <label class="mdl-textfield__label" for="sample1">Boek auteur...</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bpublic" >
-                    <label class="mdl-textfield__label" for="sample1">Boek uitgavedatum...</label>
-                </div>
-                <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="password" id="sample1" name="txt_binfo" >
-                    <label class="mdl-textfield__label" for="sample1">Boek info...</label>
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 25%; text-align: center;">
+                <div class="container">
+                    <div class="signin-form">
+                        <div class="container">
+                            <form action="register.php" method="post" class="form-signin">
+                                <h2 class="form-signin-heading">Sign Up</h2><hr />
+                                    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bname" >
+                                            <label class="mdl-textfield__label" for="sample1">Boek naam...</label>
+                                        </div>
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bautor" >
+                                            <label class="mdl-textfield__label" for="sample1">Boek auteur...</label>
+                                        </div>
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bpublic" >
+                                            <label class="mdl-textfield__label" for="sample1">Boek uitgavedatum...</label>
+                                        </div>
+                                        <div class="mdl-textfield mdl-js-textfield">
+                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_binfo" >
+                                            <label class="mdl-textfield__label" for="sample1">Boek info...</label>
+                                        </div>
+                                    </div>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary" type="submit" name="btn-signup">
+                                    <i class="glyphicon glyphicon-open-file"></i> Sign up
+                                </button>
+                            </form>
+                            <br>
+                            <br />
+                            <label>Already have an account? <a href="index.php">Sign in</a>!</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
