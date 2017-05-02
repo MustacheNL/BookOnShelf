@@ -1,8 +1,8 @@
 <html lang="en">
 <?php $pagename = "Dashboard";
-include 'includes/includes.inc.php';
-require_once("session.php");
-require_once("class.user.php");
+include '../includes/includes.inc.php';
+require_once("../classes/session.class.php");
+require_once("../classes/user.class.php");
 $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
