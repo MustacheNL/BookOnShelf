@@ -65,6 +65,26 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                     <input class="mdl-textfield__input" type="text" id="sample1">
                     <label class="mdl-textfield__label" for="sample1"><?php echo $street; ?></label>
                 </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
+                    <label class="mdl-textfield__label" for="sample1"><?php echo $zipcode; ?></label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
+                    <label class="mdl-textfield__label" for="sample1"><?php echo $city; ?></label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
+                    <label class="mdl-textfield__label" for="sample1"><?php echo $country; ?></label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
+                    <label class="mdl-textfield__label" for="sample1"><?php echo $registerdate; ?></label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
+                    <label class="mdl-textfield__label" for="sample1"><?php echo $rank; ?></label>
+                </div>
             </div>
         </main>
     </main>
