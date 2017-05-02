@@ -33,6 +33,21 @@ class USER {
         }
     }
 
+    public function addBook($bname,$bautor,$breleasedate,$binfo) {
+        try {
+            $stmt = $this->conn->prepare("INSERT INTO books(name, autor, releasedate, info) 
+                                                           VALUES(:bname, :bautor, :breleasedate, :binfo)");
+            $stmt->bindparam(":bname", $bname);
+            $stmt->bindparam(":bautor", $bautor);
+            $stmt->bindparam(":breleasedate", $breleasedate);
+            $stmt->bindparam(":binfo", $binfo);
+            $stmt->execute();
+            return $stmt;
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function doLogin($uname,$umail,$upass) {
         try {
             $stmt = $this->conn->prepare("SELECT user_id, user_name, user_email, user_pass FROM users WHERE user_name=:uname OR user_email=:umail ");

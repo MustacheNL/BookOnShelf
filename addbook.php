@@ -5,18 +5,37 @@ $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
-
+$user = new USER();
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 $pagename = "Boek(en) toevoegen";
 include "includes/header.inc.php";
 
-if (isset($_POST['login'])) {
-    echo 'login';
-} else if (isset($_POST['register'])) {
-    echo 'register';
-} else {
-    //No button pressed
+if(isset($_POST['btn-signup'])) {
+    $bname = strip_tags($_POST['txt_bname']);
+    $bautor = strip_tags($_POST['txt_bautor']);
+    $breleasedate = strip_tags($_POST['txt_breleasedate']);
+    $binfo = strip_tags($_POST['txt_binfo']);
+
+    if($bname == "") {
+        $error[] = "fuck you";
+    } else {
+        try {
+            $stmt = $user->runQuery("SELECT info FROM books WHERE info=:binfo");
+            $stmt->execute(array(':binfo'=>$binfo));
+            $row=$stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($row['info']==$binfo) {
+                $error[] = "al in bezit gvd!";
+            } else {
+                if($user->addBook($bname, $bautor, $breleasedate, $binfo)){
+                    $user->redirect('addbook.php?joined');
+                }
+            }
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
 ?>
 <html lang="en">
@@ -46,13 +65,13 @@ if (isset($_POST['login'])) {
 <!--        <span class="mdl-chip mdl-chip--contact">-->
 <!--            <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>-->
 <!--            <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem te kunnen gebruiken verzoek wij je <a href='settings.php'>hier</a> alles in te vullen.</span>-->
-        </span>
+        </main>
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 25%; text-align: center;">
                 <div class="container">
-                    < class="signin-form">
+                    <class="signin-form">
                         <div class="container">
-                            <form action="register.php" method="post" class="form-signin">
+                            <form action="addbook.php" method="post" class="form-signin">
                                 <h4 class="form-signin-heading">Voeg een boek toe</h4><hr />
                                     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                                         <div class="mdl-textfield mdl-js-textfield">
@@ -64,7 +83,7 @@ if (isset($_POST['login'])) {
                                             <label class="mdl-textfield__label" for="sample1">Boek auteur...</label>
                                         </div>
                                         <div class="mdl-textfield mdl-js-textfield">
-                                            <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bpublic" >
+                                            <input class="mdl-textfield__input" type="text" id="sample1" name="txt_breleasedate" >
                                             <label class="mdl-textfield__label" for="sample1">Boek uitgavedatum...</label>
                                         </div>
                                         <div class="mdl-textfield mdl-js-textfield">
@@ -76,38 +95,7 @@ if (isset($_POST['login'])) {
                                     <i class="glyphicon glyphicon-open-file"></i> Voeg toe
                                 </button>
                             </form>
-<?php
-                            class USER {
-                            private $conn;
-                            public function __construct() {
-                            $database = new Database();
-                            $db = $database->dbConnection();
-                            $this->conn = $db;
-                            }
 
-                            public function runQuery($sql) {
-                            $stmt = $this->conn->prepare($sql);
-                            return $stmt;
-                            }
-
-                            public function addbook($uname,$umail,$upass,$ustreet,$uzipcode,$ucity,$ucountry) {
-                            try {
-                            $new_password = password_hash($upass, PASSWORD_DEFAULT);
-                            $stmt = $this->conn->prepare("INSERT INTO users(user_name,user_email,user_pass,street,zipcode,city,country,registerdate)
-                            VALUES(:uname, :umail, :upass, :ustreet, :uzipcode, :ucity, :ucountry, CURRENT_TIMESTAMP)");
-                            $stmt->bindparam(":uname", $uname);
-                            $stmt->bindparam(":umail", $umail);
-                            $stmt->bindparam(":upass", $new_password);
-                            $stmt->bindparam(":ustreet", $ustreet);
-                            $stmt->bindparam(":uzipcode", $uzipcode);
-                            $stmt->bindparam(":ucity", $ucity);
-                            $stmt->bindparam(":ucountry", $ucountry);
-                            $stmt->execute();
-                            return $stmt;
-                            } catch(PDOException $e) {
-                            echo $e->getMessage();
-                            }
-                            ?>
                             <br>
                             <br />
 
@@ -116,7 +104,6 @@ if (isset($_POST['login'])) {
                 </div>
             </div>
         </main>
-    </main>
     <?php include 'includes/footer.inc.php' ?>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
