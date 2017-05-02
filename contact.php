@@ -42,13 +42,17 @@ if (isset($_POST['login'])) {
         </div>
     </header>
     <main class="mdl-layout__content" style="margin: auto;">
-        <span class="mdl-chip mdl-chip--contact">
-            <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
-            <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem te kunnen gebruiken verzoek wij je <a href='settings.php'>hier</a> alles in te vullen.</span>
+<!--        <span class="mdl-chip mdl-chip--contact">-->
+<!--            <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>-->
+<!--            <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem te kunnen gebruiken verzoek wij je <a href='settings.php'>hier</a> alles in te vullen.</span>-->
         </span>
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                Here must come some shit.
+            <div>
+                <h3>U kunt via hier contact met ons opnemen.</h3>
+               <a href="mailto:Nyma@telfort.nl"> Nyma Dolat</a> <br><br>
+               <a href="mailto:Jurgenklomp883@gmail.com">Jurgen Klomp</A>
+            </div>
             </div>
         </main>
     </main>
