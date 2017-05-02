@@ -18,18 +18,27 @@ if(isset($_POST['btn-signup'])) {
     $binfo = strip_tags($_POST['txt_binfo']);
 
     if($bname == "") {
-        $error[] = "fuck you";
+        $error[] = "Je moet wel een naam invullen!";
+    } elseif ($bautor = "") {
+    $error[] = "Je moet wel een auteur invullen!";
+    } elseif ($breleasedate = "") {
+        $error[] = "Je moet wel een datum invullen!";
+    } elseif ($binfo = "") {
+        $error[] = "Je moet wel wat informatie over het boek invullen!";
+    } elseif ($bautor = "") {
+        $error[] = "Je moet wel een auteur invullen!";
     } else {
         try {
-            $stmt = $user->runQuery("SELECT info FROM books WHERE info=:binfo");
-            $stmt->execute(array(':binfo'=>$binfo));
+            $stmt = $user->runQuery("SELECT name, autor, info FROM books WHERE name=:bname OR autor=:bautor OR info=:binfo");
+            $stmt->execute(array(':bname'=>$bname, ':bautor'=>$bautor, ':binfo'=>$binfo));
             $row=$stmt->fetch(PDO::FETCH_ASSOC);
 
-            if($row['info']==$binfo) {
-                $error[] = "al in bezit gvd!";
+            if($row['name']==$bname) {
+                $error[] = "Deze naam bestaat al!";
             } else {
                 if($user->addBook($bname, $bautor, $breleasedate, $binfo)){
                     $user->redirect('addbook.php?joined');
+
                 }
             }
         } catch(PDOException $e) {
@@ -73,6 +82,24 @@ if(isset($_POST['btn-signup'])) {
                         <div class="container">
                             <form action="addbook.php" method="post" class="form-signin">
                                 <h4 class="form-signin-heading">Voeg een boek toe</h4><hr />
+                                <?php
+                                if(isset($error)) {
+                                    foreach($error as $error) {
+                                        ?>
+                                        <span class="mdl-chip mdl-chip--contact">
+                                <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
+                                <span class="mdl-chip__text"><?php echo $error; ?></span>
+                            </span>
+                                        <?php
+                                    }
+                                } else if(isset($_GET['joined'])) {
+                                    header( "refresh:5;url=index.php" );
+                                    ?>
+                                    <span class="mdl-chip mdl-chip--contact">
+                                <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">:D</span>
+                                <span class="mdl-chip__text">Succesfully registered, you will be redirected to the home in 5 seconds. If not click <a href='index.php'>here</a>!</span>
+                            </span>
+                                <?php } ?>
                                     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                                         <div class="mdl-textfield mdl-js-textfield">
                                             <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bname" >
