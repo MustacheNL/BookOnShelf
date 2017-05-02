@@ -48,7 +48,21 @@ if (isset($_POST['login'])) {
         </span>
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                Here must come some shit.
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample1">
+                    <label class="mdl-textfield__label" for="sample1">
+                       <?php $result = $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+                       $stmt->execute(array(":user_id"=>$user_id));
+
+                       while ($row = $result->fetch(PDO::FETCH_ASSOC))
+                       {
+                           $title = $row['street'];
+                           $body = $row['zipcode'];
+                       }
+
+                       echo $title;
+                       echo $body; ?></label>
+                </div>
             </div>
         </main>
     </main>

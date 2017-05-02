@@ -51,6 +51,16 @@ class USER {
         }
     }
 
+    public function getInfo($uname,$umail) {
+        try {
+            $stmt = $this->conn->prepare("SELECT street, zipcode, city, country, registerdate, rank FROM users WHERE user_name=:uname OR user_email:umail");
+            $stmt->execute(array(':uname' => $uname, ':umail' => $umail));
+            $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function is_loggedin() {
         if(isset($_SESSION['user_session'])) {
             return true;
