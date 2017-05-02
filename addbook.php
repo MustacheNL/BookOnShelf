@@ -50,35 +50,67 @@ if (isset($_POST['login'])) {
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 25%; text-align: center;">
                 <div class="container">
-                    <div class="signin-form">
+                    < class="signin-form">
                         <div class="container">
                             <form action="register.php" method="post" class="form-signin">
-                                <h2 class="form-signin-heading">Sign Up</h2><hr />
+                                <h4 class="form-signin-heading">Voeg een boek toe</h4><hr />
                                     <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                                         <div class="mdl-textfield mdl-js-textfield">
-                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bname" >
+                                            <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bname" >
                                             <label class="mdl-textfield__label" for="sample1">Boek naam...</label>
                                         </div>
                                         <div class="mdl-textfield mdl-js-textfield">
-                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bautor" >
+                                            <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bautor" >
                                             <label class="mdl-textfield__label" for="sample1">Boek auteur...</label>
                                         </div>
                                         <div class="mdl-textfield mdl-js-textfield">
-                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_bpublic" >
+                                            <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bpublic" >
                                             <label class="mdl-textfield__label" for="sample1">Boek uitgavedatum...</label>
                                         </div>
                                         <div class="mdl-textfield mdl-js-textfield">
-                                            <input class="mdl-textfield__input" type="password" id="sample1" name="txt_binfo" >
+                                            <input class="mdl-textfield__input" type="text" id="sample1" name="txt_binfo" >
                                             <label class="mdl-textfield__label" for="sample1">Boek info...</label>
                                         </div>
                                     </div>
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary" type="submit" name="btn-signup">
-                                    <i class="glyphicon glyphicon-open-file"></i> Sign up
+                                    <i class="glyphicon glyphicon-open-file"></i> Voeg toe
                                 </button>
                             </form>
+<?php
+                            class USER {
+                            private $conn;
+                            public function __construct() {
+                            $database = new Database();
+                            $db = $database->dbConnection();
+                            $this->conn = $db;
+                            }
+
+                            public function runQuery($sql) {
+                            $stmt = $this->conn->prepare($sql);
+                            return $stmt;
+                            }
+
+                            public function addbook($uname,$umail,$upass,$ustreet,$uzipcode,$ucity,$ucountry) {
+                            try {
+                            $new_password = password_hash($upass, PASSWORD_DEFAULT);
+                            $stmt = $this->conn->prepare("INSERT INTO users(user_name,user_email,user_pass,street,zipcode,city,country,registerdate)
+                            VALUES(:uname, :umail, :upass, :ustreet, :uzipcode, :ucity, :ucountry, CURRENT_TIMESTAMP)");
+                            $stmt->bindparam(":uname", $uname);
+                            $stmt->bindparam(":umail", $umail);
+                            $stmt->bindparam(":upass", $new_password);
+                            $stmt->bindparam(":ustreet", $ustreet);
+                            $stmt->bindparam(":uzipcode", $uzipcode);
+                            $stmt->bindparam(":ucity", $ucity);
+                            $stmt->bindparam(":ucountry", $ucountry);
+                            $stmt->execute();
+                            return $stmt;
+                            } catch(PDOException $e) {
+                            echo $e->getMessage();
+                            }
+                            ?>
                             <br>
                             <br />
-                            <label>Already have an account? <a href="index.php">Sign in</a>!</label>
+
                         </div>
                     </div>
                 </div>
