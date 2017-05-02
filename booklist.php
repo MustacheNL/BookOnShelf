@@ -48,6 +48,7 @@ if (isset($_POST['login'])) {
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%">
+
                     <thead>
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric">Naam</th>
