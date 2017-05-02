@@ -18,6 +18,18 @@ if (isset($_POST['login'])) {
 } else {
     //No button pressed
 }
+
+$result = $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
+$stmt->execute(array(":user_id"=>$user_id));
+
+while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    $street = $row['street'];
+    $zipcode = $row['zipcode'];
+    $city = $row['city'];
+    $country = $row['country'];
+    $registerdate = $row['registerdate'];
+    $rank = $row['rank'];
+}
 ?>
 <html lang="en">
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -51,18 +63,7 @@ if (isset($_POST['login'])) {
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 <div class="mdl-textfield mdl-js-textfield">
                     <input class="mdl-textfield__input" type="text" id="sample1">
-                    <label class="mdl-textfield__label" for="sample1">
-                       <?php $result = $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
-                       $stmt->execute(array(":user_id"=>$user_id));
-
-                       while ($row = $result->fetch(PDO::FETCH_ASSOC))
-                       {
-                           $title = $row['street'];
-                           $body = $row['zipcode'];
-                       }
-
-                       echo $title;
-                       echo $body; ?></label>
+                    <label class="mdl-textfield__label" for="sample1"><?php echo $street; ?></label>
                 </div>
             </div>
         </main>
