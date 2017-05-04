@@ -1,6 +1,6 @@
 <html lang="en">
-<?php $pagename = "Dashboard";
-include '../includes/includes.inc.php';
+<?php
+$pagename = "Dashboard";
 require_once("../classes/session.class.php");
 require_once("../classes/user.class.php");
 $auth_user = new USER();
@@ -12,8 +12,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <head>
-    <link rel="stylesheet" href="css/styles-dashboard.css">
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="../css/styles-dashboard.css">
+    <link rel="shortcut icon" href="../images/favicon.ico">
     <style>
         #view-source {
             position: fixed;
@@ -61,7 +61,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     </header>
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-            <img src="images/user.jpg" class="demo-avatar">
+            <img src="../images/user.jpg" class="demo-avatar">
             <div class="demo-avatar-dropdown">
                 <span><?php echo $userRow['user_email']; ?></span>
                 <div class="mdl-layout-spacer"></div>
@@ -72,7 +72,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
                     <li class="mdl-menu__item" id="Register">Add account...</li>
                     <li class="mdl-menu__item">Delete account...</li>
-                    <a href="logout.php?logout=true" style="text-decoration: none;"><li class="mdl-menu__item">Log out...</li></a>
+                    <a href="../logout.php?logout=true" style="text-decoration: none;"><li class="mdl-menu__item">Log out...</li></a>
                 </ul>
             </div>
         </header>

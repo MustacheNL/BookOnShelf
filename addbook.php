@@ -100,7 +100,7 @@ if(isset($_POST['btn-signup'])) {
                                 <span class="mdl-chip__text">Succesfully registered, you will be redirected to the home in 5 seconds. If not click <a href='index.php'>here</a>!</span>
                             </span>
                                 <?php } ?>
-                                    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+
                                         <div class="mdl-textfield mdl-js-textfield">
                                             <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bname" >
                                             <label class="mdl-textfield__label" for="sample1">Boek naam...</label>
@@ -117,7 +117,7 @@ if(isset($_POST['btn-signup'])) {
                                             <input class="mdl-textfield__input" type="text" id="sample1" name="txt_binfo" >
                                             <label class="mdl-textfield__label" for="sample1">Boek info...</label>
                                         </div>
-                                    </div>
+
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary" type="submit" name="btn-signup">
                                     <i class="glyphicon glyphicon-open-file"></i> Voeg toe
                                 </button>

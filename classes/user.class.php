@@ -1,5 +1,9 @@
 <?php
-require_once('includes/config.inc.php');
+if(stristr($_SERVER['REQUEST_URI'], 'housekeeping/')) {
+    require_once('../includes/config.inc.php');
+} else {
+    require_once("includes/config.inc.php");
+}
 
 class USER {
     private $conn;
