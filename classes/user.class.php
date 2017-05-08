@@ -69,6 +69,22 @@ class USER {
             echo $e->getMessage();
         }
     }
+    public function checkInfo($uname,$umail,$upass)
+    {
+        try {
+            $stmt = $this->conn->prepare("SELECT gender, birthdate, phonenumber, altnumber FROM users WHERE user_name=:uname OR user_email=:umail");
+            $stmt->execute(array(':uname' => $uname, ':umail' => $umail));
+            $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($stmt['gender'] == "" || $stmt['birtdate'] == "" || $stmt['phonenumber'] == "" || $stmt['altnumber'] == "") {
+                $error[] = "wtf kerel";
+            } else {
+                echo "XD";
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
     public function is_loggedin() {
         if(isset($_SESSION['user_session'])) {
