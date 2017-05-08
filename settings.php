@@ -55,9 +55,10 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         </div>
     </header>
     <main class="mdl-layout__content" style="margin: auto;">
+        <?php include_once ("includes/check.inc.php"); ?>
         <span class="mdl-chip mdl-chip--contact">
             <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
-                        <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem te kunnen gebruiken verzoek wij je <a href='settings.php'>hier</a> alles in te vullen.</span>
+                        <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem volledig te kunnen gebruiken verzoeken wij je de benodigde informatie <a href='settings.php'>hier</a> in te vullen</span>
         </span>
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">

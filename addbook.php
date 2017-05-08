@@ -25,7 +25,7 @@ if(isset($_POST['btn-signup'])) {
         $error[] = "Je moet wel een datum invullen!";
     } elseif ($binfo = "") {
         $error[] = "Je moet wel wat informatie over het boek invullen!";
-    } elseif ($bautor = "") {
+    } elseif ($binfo = "") {
         $error[] = "Je moet wel een auteur invullen!";
     } else {
         try {
