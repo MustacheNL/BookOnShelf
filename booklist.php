@@ -5,7 +5,6 @@ $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
-
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 $pagename = "Boek(en) huren";
@@ -18,6 +17,9 @@ if (isset($_POST['login'])) {
 } else {
     //No button pressed
 }
+
+
+
 ?>
 <html lang="en">
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -50,16 +52,21 @@ if (isset($_POST['login'])) {
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%">
 
+                    <?php
+                    $stmt = $auth_user->runQuery("SELECT name FROM books WHERE name=:bname");
+                    $stmt->execute(array(':bname'=>$bname));
+                    $stmt->fetch(PDO::FETCH_ASSOC);
+                    ?>
                     <thead>
                     <tr>
-                        <th class="mdl-data-table__cell--non-numeric">Naam</th>
+                        <th class="mdl-data-table__cell--non-numeric">Naam boek</th>
                         <th>Auteur</th>
                         <th>Beschikbaar</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Boek 1</td>
+                        <td class="mdl-data-table__cell--non-numeric"><?php echo $bname; ?></td>
                         <td>Nyma</td>
                         <td>Ja</td>
                     </tr>
