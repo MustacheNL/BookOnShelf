@@ -13,7 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#boeken {
+  margin-bottom: 90%;
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  z-index: 99;
+}
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
   margin: 0;

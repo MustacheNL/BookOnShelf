@@ -1,6 +1,9 @@
 <?php
 require_once("classes/session.class.php");
 require_once('classes/user.class.php');
+$servername = "145.129.251.239";
+$username = "jurgen";
+$password = "1231234";
 $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
@@ -17,9 +20,6 @@ if (isset($_POST['login'])) {
 } else {
     //No button pressed
 }
-
-
-
 ?>
 <html lang="en">
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -51,36 +51,51 @@ if (isset($_POST['login'])) {
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" style="width: 100%">
-
+                <div id="boeken">
                     <?php
-                    $stmt = $auth_user->runQuery("SELECT name FROM books WHERE name=:bname");
-                    $stmt->execute(array(':bname'=>$bname));
-                    $stmt->fetch(PDO::FETCH_ASSOC);
-                    ?>
-                    <thead>
-                    <tr>
-                        <th class="mdl-data-table__cell--non-numeric">Naam boek</th>
-                        <th>Auteur</th>
-                        <th>Beschikbaar</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric"><?php echo $bname; ?></td>
-                        <td>Nyma</td>
-                        <td>Ja</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Boek 2</td>
-                        <td>Nyma</td>
-                        <td>Ja</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Boek 3</td>
-                        <td>Nyma</td>
-                        <td>Ja</td>
-                    </tr>
-                    </tbody>
+                    echo "<table style='border: solid 1px black;margin-bottom: 900px>'";
+                    echo "<tr><th>Boeknaam</th><th>Auteur</th><th>Release datum</th><th>Info</th></tr>";
+                    class TableRows extends RecursiveIteratorIterator
+                    {
+                        function __construct($it)
+                        {
+                            parent::__construct($it, self::LEAVES_ONLY);
+                        }
+                        function current() {
+                            return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+                        }
+
+                        function beginChildren() {
+                            echo "<tr>";
+                        }
+
+                        function endChildren() {
+                            echo "</tr>" . "\n";
+                        }
+
+                    }
+                    try {
+                        $conn = new PDO("mysql:host=$servername;dbname=bookonshelf", $username, $password);
+                        // set the PDO error mode to exception
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        echo "   ";
+                    }
+                    catch(PDOException $e)
+                    {
+                        echo "Connection failed: " . $e->getMessage();
+                    }
+                    try {
+                        $stmt = $conn->prepare("SELECT name, autor, releasedate, info FROM books");
+                        $stmt->execute();
+                        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+                            echo $v ;
+                        }
+                    } catch(PDOException $e) {
+                        echo "Error: " . $e->getMessage();
+                    }
+                ?>
+                </div>
                 </table>
             </div>
         </main>
