@@ -9,10 +9,8 @@ $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
 $pagename = "Boek(en) huren";
 include "includes/header.inc.php";
-
 if (isset($_POST['login'])) {
     echo 'login';
 } else if (isset($_POST['register'])) {
@@ -64,21 +62,17 @@ if (isset($_POST['login'])) {
                         function current() {
                             return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
                         }
-
                         function beginChildren() {
                             echo "<tr>";
                         }
-
                         function endChildren() {
                             echo "</tr>" . "\n";
                         }
-
                     }
                     try {
                         $conn = new PDO("mysql:host=$servername;dbname=bookonshelf", $username, $password);
                         // set the PDO error mode to exception
                         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                        echo "   ";
                     }
                     catch(PDOException $e)
                     {
