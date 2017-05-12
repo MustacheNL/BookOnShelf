@@ -5,7 +5,7 @@ if(stristr($_SERVER['REQUEST_URI'], 'config.inc.php')){
 
 class Database {
     private $host = "145.129.251.239";
-    private $db_name = "bookonshelf";
+    private $db_name = "BookOnShelf";
     private $username = "jurgen";
     private $password = "1231234";
     public $conn;
