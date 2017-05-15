@@ -73,8 +73,9 @@ if(isset($_POST['btn-login'])) {
                 </div>
             </div>
         </div>
-        <?php include 'includes/footer.inc.php' ?>
+
     </main>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <?php include 'includes/footer.inc.php' ?>
 </body>
 </html>
