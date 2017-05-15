@@ -52,7 +52,7 @@ if (isset($_POST['login'])) {
                 <div id="boeken">
                     <?php
                     echo "<table style='border: solid 1px black;margin-bottom: 900px>'";
-                    echo "<tr><th>Boeknaam</th><th>Auteur</th><th>Release datum</th><th>Info</th></tr>";
+                    echo "<tr><th>Boeknaam</th><th>Auteur</th><th>Release datum</th><th>Info</th><th>Huren</th></tr>";
                     class TableRows extends RecursiveIteratorIterator
                     {
                         function __construct($it)
@@ -83,11 +83,13 @@ if (isset($_POST['login'])) {
                         $stmt->execute();
                         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
                         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-                            echo $v ;
+                            echo $v;
                         }
                     } catch(PDOException $e) {
                         echo "Error: " . $e->getMessage();
                     }
+
+
                 ?>
                 </div>
                 </table>
