@@ -38,27 +38,27 @@ include 'includes/menu.inc.php';
         </span>
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="mdl-textfield mdl-js-textfield">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1">
                     <label class="mdl-textfield__label" for="sample1"><?php echo $street; ?></label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
                     <label class="mdl-textfield__label" for="sample1"><?php echo $zipcode; ?></label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
                     <label class="mdl-textfield__label" for="sample1"><?php echo $city; ?></label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
                     <label class="mdl-textfield__label" for="sample1"><?php echo $country; ?></label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
                     <label class="mdl-textfield__label" for="sample1"><?php echo $registerdate; ?></label>
                 </div>
-                <div class="mdl-textfield mdl-js-textfield">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
                     <label class="mdl-textfield__label" for="sample1"><?php echo $rank; ?></label>
                 </div>
