@@ -63,7 +63,8 @@ include 'includes/menu.inc.php';
                                 ?>
                                 <span class="mdl-chip mdl-chip--contact">
                                 <span class="mdl-chip__contact mdl-color--green mdl-color-text--white">:D</span>
-                                <span class="mdl-chip__text">Boek succesvol toegevoegd!</span>
+                                <span class="mdl-chip__text">Je hebt met succes een boek toegevoegd. <a
+                                            href='booklist.php'>here</a>!</span>
                             </span>
                             <?php } ?>
 
