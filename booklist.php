@@ -18,30 +18,9 @@ if (isset($_POST['login'])) {
 } else {
     //No button pressed
 }
+
+include 'includes/menu.inc.php';
 ?>
-<html lang="en">
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            <h3>BookOnShelf</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-            <a href="home.php" class="mdl-layout__tab">Home</a>
-            <a href="settings.php" class="mdl-layout__tab">Mijn account</a>
-            <a href="books.php" class="mdl-layout__tab">Mijn boeken</a>
-            <a href="booklist.php" class="mdl-layout__tab is-active">Boek(en) huren</a>
-            <a href="addbook.php" class="mdl-layout__tab">Boek(en) toevoegen</a>
-            <a href="contact.php" class="mdl-layout__tab">Contact</a>
-            <div class="mdl-layout-spacer"></div>
-            <a href="housekeeping/index.php" class="mdl-layout__tab" style="color: green;">Dashboard</a>
-            <a href="logout.php?logout=true" class="mdl-layout__tab" style="color: red;">Uitloggen</a>
-        </div>
-    </header>
     <main class="mdl-layout__content" style="margin: auto;">
         <span class="mdl-chip mdl-chip--contact">
             <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
