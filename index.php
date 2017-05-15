@@ -62,15 +62,13 @@ if(isset($_POST['btn-login'])) {
                                 <input class="mdl-textfield__input" type="password" id="sample1" name="txt_password">
                                 <label class="mdl-textfield__label" for="sample1">Wachtwoord...</label>
                             </div>
-                            <div style="margin: 0 auto">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored, btn btn-default" type="submit" name="btn-login">
-                                    <i class="glyphicon glyphicon-log-in"></i> Inloggen
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored, btn btn-default" href="register.php" name="btn-register">
+                                    <i class="glyphicon glyphicon-log-in"></i> Registreren
                                 </button>
-                            </div>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored, btn btn-default" type="submit" name="btn-login">
+                                <i class="glyphicon glyphicon-log-in"></i> Inloggen
+                            </button>
                         </form>
-                        <br>
-                        <br />
-                        <label>Don't have account yet? Sign up <a href="register.php">here</a>!</label>
                     </div>
                 </div>
             </div>
