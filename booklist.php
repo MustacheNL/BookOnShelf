@@ -11,14 +11,6 @@ $stmt->execute(array(":user_id"=>$user_id));
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 $pagename = "Boek(en) huren";
 include "includes/header.inc.php";
-if (isset($_POST['login'])) {
-    echo 'login';
-} else if (isset($_POST['register'])) {
-    echo 'register';
-} else {
-    //No button pressed
-}
-
 include 'includes/menu.inc.php';
 ?>
     <main class="mdl-layout__content" style="margin: auto;">
@@ -58,7 +50,7 @@ include 'includes/menu.inc.php';
                         echo "Connection failed: " . $e->getMessage();
                     }
                     try {
-                        $stmt = $conn->prepare("SELECT name, autor, releasedate, info FROM books");
+                        $stmt = $conn->prepare("SELECT name, author, releasedate, info FROM books");
                         $stmt->execute();
                         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
                         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {

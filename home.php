@@ -5,19 +5,9 @@ $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id" => $user_id));
-
 $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
-
 $pagename = "Home";
 include "includes/header.inc.php";
-
-if (isset($_POST['login'])) {
-    echo 'login';
-} else if (isset($_POST['register'])) {
-    echo 'register';
-} else {
-    //No button pressed
-}
 include 'includes/menu.inc.php';
 ?>
     <main class="mdl-layout__content" style="margin: auto;">

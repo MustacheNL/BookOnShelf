@@ -11,20 +11,20 @@ $pagename = "Boek toevoegen";
 include "includes/header.inc.php";
 if (isset($_POST['btn-signup'])) {
     $bname = strip_tags($_POST['txt_bname']);
-    $bautor = strip_tags($_POST['txt_bautor']);
+    $bauthor = strip_tags($_POST['txt_bauthor']);
     $breleasedate = strip_tags($_POST['txt_breleasedate']);
     $binfo = strip_tags($_POST['txt_binfo']);
-    if ($bname == "" || $bautor == "" || $breleasedate == "" || $binfo == "") {
+    if ($bname == "" || $bauthor == "" || $breleasedate == "" || $binfo == "") {
         $error[] = "Je hebt niet alle velden ingevuld!";
     } else {
         try {
-            $stmt = $user->runQuery("SELECT name, autor, info FROM books WHERE name=:bname OR autor=:bautor OR info=:binfo");
-            $stmt->execute(array(':bname' => $bname, ':bautor' => $bautor, ':binfo' => $binfo));
+            $stmt = $user->runQuery("SELECT name, author, info FROM books WHERE name=:bname OR author=:bauthor OR info=:binfo");
+            $stmt->execute(array(':bname' => $bname, ':bauthor' => $bauthor, ':binfo' => $binfo));
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($row['name'] == $bname) {
                 $error[] = "Deze naam bestaat al!";
             } else {
-                if ($user->addBook($bname, $bautor, $breleasedate, $binfo)) {
+                if ($user->addBook($bname, $bauthor, $breleasedate, $binfo)) {
                     $user->redirect('addbook.php?joined');
                 }
             }
@@ -35,11 +35,6 @@ if (isset($_POST['btn-signup'])) {
 }
 include 'includes/menu.inc.php';
 ?>
-    <main class="mdl-layout__content" style="margin: auto;">
-        <!--        <span class="mdl-chip mdl-chip--contact">-->
-        <!--            <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>-->
-        <!--            <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem te kunnen gebruiken verzoek wij je <a href='settings.php'>hier</a> alles in te vullen.</span>-->
-    </main>
     <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
         <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="width: 25%; text-align: center;">
             <div class="container">
@@ -73,7 +68,7 @@ include 'includes/menu.inc.php';
                                 <label class="mdl-textfield__label" for="sample1">Boek naam...</label>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bautor">
+                                <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bauthor">
                                 <label class="mdl-textfield__label" for="sample1">Boek auteur...</label>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield">
