@@ -51,7 +51,7 @@ if(isset($_POST['btn-login'])) {
                                     <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
                                     <span class="mdl-chip__text"><?php echo $error; ?></span>
                                 </span>
-                            <?php ?>
+                            <?php } ?>
                         </div>
                         <form action="index.php" method="post">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
