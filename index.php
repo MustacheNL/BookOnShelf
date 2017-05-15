@@ -54,17 +54,19 @@ if(isset($_POST['btn-login'])) {
                             <?php } ?>
                         </div>
                         <form action="index.php" method="post">
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="sample1" name="txt_uname_email">
-                                <label class="mdl-textfield__label" for="sample1">Your username or e-mail...</label>
+                                <label class="mdl-textfield__label" for="sample1">Gebruikersnaam of E-mail...</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="password" id="sample1" name="txt_password">
-                                <label class="mdl-textfield__label" for="sample1">Your password...</label>
+                                <label class="mdl-textfield__label" for="sample1">Wachtwoord...</label>
                             </div>
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored, btn btn-default" type="submit" name="btn-login">
-                                <i class="glyphicon glyphicon-log-in"></i> Sign In
-                            </button>
+                            <div style="margin: 0 auto">
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored, btn btn-default" type="submit" name="btn-login">
+                                    <i class="glyphicon glyphicon-log-in"></i> Inloggen
+                                </button>
+                            </div>
                         </form>
                         <br>
                         <br />

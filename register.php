@@ -67,7 +67,7 @@ if(isset($_POST['btn-signup'])) {
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            <h3>@BookOnShelf</h3>
+            <h3>BookOnShelf</h3>
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
@@ -97,37 +97,21 @@ if(isset($_POST['btn-signup'])) {
                                 <span class="mdl-chip__text">Succesfully registered, you will be redirected to the home in 5 seconds. If not click <a href='index.php'>here</a>!</span>
                             </span>
                             <?php } ?>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="sample1" name="txt_uname" value="<?php if(isset($error)){echo $uname;}?>" >
                                 <label class="mdl-textfield__label" for="sample1">Username...</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="sample1" name="txt_umail" value="<?php if(isset($error)){echo $umail;}?>" >
                                 <label class="mdl-textfield__label" for="sample1">E-mail...</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="password" id="sample1" name="txt_upass" >
                                 <label class="mdl-textfield__label" for="sample1">Password...</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="password" id="sample1" name="txt_upass2" >
                                 <label class="mdl-textfield__label" for="sample1">Password again...</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" >
-                                <label class="mdl-textfield__label" for="sample1">Street...</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" type="text" id="sample1" name="txt_zipcode" >
-                                <label class="mdl-textfield__label" for="sample1">Zipcode...</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" type="text" id="sample1" name="txt_city" >
-                                <label class="mdl-textfield__label" for="sample1">City...</label>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield">
-                                <input class="mdl-textfield__input" type="text" id="sample1" name="txt_country" >
-                                <label class="mdl-textfield__label" for="sample1">Country...</label>
                             </div>
                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary" type="submit" name="btn-signup">
                                 <i class="glyphicon glyphicon-open-file"></i> Sign up
@@ -138,11 +122,17 @@ if(isset($_POST['btn-signup'])) {
                         <label>Already have an account? <a href="index.php">Sign in</a>!</label>
                     </div>
                 </div>
+
             </div>
+
         </div>
-        <?php include 'includes/footer.inc.php' ?>
+
     </main>
+
 </div>
+<?php include 'includes/footer.inc.php' ?>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
 </body>
+
 </html>

@@ -63,19 +63,19 @@ include 'includes/menu.inc.php';
                             </span>
                             <?php } ?>
 
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bname">
                                 <label class="mdl-textfield__label" for="sample1">Boek naam...</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="sample1" name="txt_bauthor">
                                 <label class="mdl-textfield__label" for="sample1">Boek auteur...</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="sample1" name="txt_breleasedate">
                                 <label class="mdl-textfield__label" for="sample1">Boek uitgavedatum...</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="sample1" name="txt_binfo">
                                 <label class="mdl-textfield__label" for="sample1">Boek info...</label>
                             </div>
