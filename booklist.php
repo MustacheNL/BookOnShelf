@@ -38,7 +38,7 @@ include 'includes/menu.inc.php';
                             echo "<tr>";
                         }
                         function endChildren() {
-                            echo '<td style=\'width: 150px; border: 1px solid black;\'><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary" type="submit" name="btn-huren" style="margin: 0 auto; text-align: center;">
+                            echo '<td style=\'width: 150px; border: 1px solid black;\'><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary" type="submit" name="btn-huren" style="margin-left: 25%;">
                                 <i class="glyphicon glyphicon-open-file"></i> Huren
                             </button></td>';
                             echo "</tr>" . "\n";
