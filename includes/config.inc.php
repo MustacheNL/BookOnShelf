@@ -6,8 +6,8 @@ if(stristr($_SERVER['REQUEST_URI'], 'config.inc.php')){
 class Database {
     private $host = "145.129.251.239";
     private $db_name = "bookonshelf";
-    private $username = "nyma";
-    private $password = "26052000";
+    private $username = "root";
+    private $password = "Welkom01";
     public $conn;
 
     public function dbConnection() {

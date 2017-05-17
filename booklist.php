@@ -2,13 +2,14 @@
 require_once("classes/session.class.php");
 require_once('classes/user.class.php');
 $servername = "145.129.251.239";
-$username = "jurgen";
-$password = "1231234";
+$username = "root";
+$password = "Welkom01";
 $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id"=>$user_id));
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+$allowedlimit = 29;
 $pagename = "Boek(en) huren";
 include "includes/header.inc.php";
 include 'includes/menu.inc.php';
@@ -35,12 +36,12 @@ include 'includes/menu.inc.php';
                         }
                         function beginChildren() {
                             echo "<tr>";
-
                         }
                         function endChildren() {
-                            echo '<td><input type="button" value = "Huren"/></td>';
+                            echo '<td style=\'width: 150px; border: 1px solid black;\'><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary" type="submit" name="btn-huren" style="margin: 0 auto; text-align: center;">
+                                <i class="glyphicon glyphicon-open-file"></i> Huren
+                            </button></td>';
                             echo "</tr>" . "\n";
-
                         }
                     }
                     try {
@@ -56,10 +57,8 @@ include 'includes/menu.inc.php';
                         $stmt = $conn->prepare("SELECT name, author, releasedate, info FROM books");
                         $stmt->execute();
                         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-
-                            echo $v;
-
+                        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$results) {
+                            echo $results;
                         }
                     } catch(PDOException $e) {
                         echo "Error: " . $e->getMessage();
