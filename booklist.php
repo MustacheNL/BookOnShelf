@@ -35,9 +35,12 @@ include 'includes/menu.inc.php';
                         }
                         function beginChildren() {
                             echo "<tr>";
+
                         }
                         function endChildren() {
+                            echo '<td><input type="button" value = "Huren"/></td>';
                             echo "</tr>" . "\n";
+
                         }
                     }
                     try {
@@ -54,11 +57,14 @@ include 'includes/menu.inc.php';
                         $stmt->execute();
                         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
                         foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+
                             echo $v;
+
                         }
                     } catch(PDOException $e) {
                         echo "Error: " . $e->getMessage();
                     }
+
 
 
                 ?>
