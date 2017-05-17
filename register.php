@@ -13,10 +13,6 @@ if(isset($_POST['btn-signup'])) {
     $uname = strip_tags($_POST['txt_uname']);
     $umail = strip_tags($_POST['txt_umail']);
     $upass = strip_tags($_POST['txt_upass']);
-    $ustreet = strip_tags($_POST['txt_street']);
-    $uzipcode = strip_tags($_POST['txt_zipcode']);
-    $ucity = strip_tags($_POST['txt_city']);
-    $ucountry = strip_tags($_POST['txt_country']);
 
     if($uname == "") {
         $error[] = "Provide a username!";
@@ -30,14 +26,6 @@ if(isset($_POST['btn-signup'])) {
         $error[] = "Password must be atleast 6 characters!";
     } else if($_POST['txt_upass']!=$_POST['txt_upass2']) {
         $error[] = "The entered passwords are not the same!";
-    } else if($ustreet == "") {
-        $error[] = "Provide a street name!";
-    } else if($uzipcode == "") {
-        $error[] = "Provide a ZIP code!";
-    } else if($ucity == "") {
-        $error[] = "Provide a city name!";
-    } else if($ucountry == "") {
-        $error[] = "Provide a country name!";
     } else {
         try {
             $stmt = $user->runQuery("SELECT user_name, user_email FROM users WHERE user_name=:uname OR user_email=:umail");
@@ -49,7 +37,7 @@ if(isset($_POST['btn-signup'])) {
             } else if($row['user_email']==$umail) {
                 $error[] = "E-mail already taken!";
             } else {
-                if($user->register($uname,$umail,$upass, $ustreet, $uzipcode, $ucity, $ucountry)){
+                if($user->register($uname,$umail,$upass)){
                     $user->redirect('register.php?joined');
                 }
             }
@@ -131,8 +119,8 @@ if(isset($_POST['btn-signup'])) {
 
 </div>
 <?php include 'includes/footer.inc.php' ?>
-<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
 
 </body>
-
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </html>

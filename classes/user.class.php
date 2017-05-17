@@ -18,18 +18,14 @@ class USER {
         return $stmt;
     }
 
-    public function register($uname,$umail,$upass,$ustreet,$uzipcode,$ucity,$ucountry) {
+    public function register($uname,$umail,$upass) {
         try {
             $new_password = password_hash($upass, PASSWORD_DEFAULT);
-            $stmt = $this->conn->prepare("INSERT INTO users(user_name,user_email,user_pass,street,zipcode,city,country,registerdate) 
-		                                               VALUES(:uname, :umail, :upass, :ustreet, :uzipcode, :ucity, :ucountry, CURRENT_TIMESTAMP)");
+            $stmt = $this->conn->prepare("INSERT INTO users(user_name,user_email,user_pass,registerdate) 
+		                                               VALUES(:uname, :umail, :upass, CURRENT_TIMESTAMP)");
             $stmt->bindparam(":uname", $uname);
             $stmt->bindparam(":umail", $umail);
             $stmt->bindparam(":upass", $new_password);
-            $stmt->bindparam(":ustreet", $ustreet);
-            $stmt->bindparam(":uzipcode", $uzipcode);
-            $stmt->bindparam(":ucity", $ucity);
-            $stmt->bindparam(":ucountry", $ucountry);
             $stmt->execute();
             return $stmt;
         } catch(PDOException $e) {
@@ -37,12 +33,12 @@ class USER {
         }
     }
 
-    public function addBook($bname,$bautor,$breleasedate,$binfo) {
+    public function addBook($bname,$bauthor,$breleasedate,$binfo) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO books(name, autor, releasedate, info) 
-                                                           VALUES(:bname, :bautor, :breleasedate, :binfo)");
+            $stmt = $this->conn->prepare("INSERT INTO books(name, author, releasedate, info) 
+                                                           VALUES(:bname, :bauthor, :breleasedate, :binfo)");
             $stmt->bindparam(":bname", $bname);
-            $stmt->bindparam(":bautor", $bautor);
+            $stmt->bindparam(":bauthor", $bauthor);
             $stmt->bindparam(":breleasedate", $breleasedate);
             $stmt->bindparam(":binfo", $binfo);
             $stmt->execute();
