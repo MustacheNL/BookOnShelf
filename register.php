@@ -119,8 +119,6 @@ if(isset($_POST['btn-signup'])) {
 
 </div>
 <?php include 'includes/footer.inc.php' ?>
-
-
 </body>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </html>
