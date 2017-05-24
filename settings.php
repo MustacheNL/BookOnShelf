@@ -19,12 +19,13 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $city = $row['city'];
     $country = $row['country'];
     $registerdate = $row['registerdate'];
+    $gender = $row['gender'];
     $rank = $row['rank'];
 }
 include 'includes/menu.inc.php';
 if (isset($_POST['btn-submit'])) {
-    $stmt = $auth_user->runQuery("UPDATE users SET `street` = :street, `housenumber` = :housenumber, `zipcode` = :zipcode, `city` = :city, `country` = :country WHERE `user_id` = :user_id");
-    $stmt->execute(array(':street' => $_POST['txt_street'], ':housenumber' => $_POST['txt_housenumber'], ':zipcode' => $_POST['txt_zipcode'], ':city' => $_POST['txt_city'], ':country' => $_POST['txt_country'], ':user_id' => $user_id));
+    $stmt = $auth_user->runQuery("UPDATE users SET `street` = :street, `housenumber` = :housenumber, `zipcode` = :zipcode, `city` = :city, `country` = :country, `gender` = :gender WHERE `user_id` = :user_id");
+    $stmt->execute(array(':street' => $_POST['txt_street'], ':housenumber' => $_POST['txt_housenumber'], ':zipcode' => $_POST['txt_zipcode'], ':city' => $_POST['txt_city'], ':country' => $_POST['txt_country'], ':gender' => $_POST['txt_gender'], ':user_id' => $user_id));
     } else {
        // error[4] = XD;
     }
@@ -59,22 +60,12 @@ if (isset($_POST['btn-submit'])) {
                     <input class="mdl-textfield__input" type="text" id="sample1" name="txt_country" value="<?php echo $country; ?>">
                     <label class="mdl-textfield__label" for="sample1">Land</label>
                 </div>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-0">
-                    <input type="radio" id="option-0" class="mdl-radio__button" name="options" value="0">
-                    <span class="mdl-radio__label">Man</span>
-                </label>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                    <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
-                    <span class="mdl-radio__label">Vrouw</span>
-                </label>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                    <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
-                    <span class="mdl-radio__label">Apache Helicopter</span>
-                </label>
-                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-                    <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3">
-                    <span class="mdl-radio__label">Privé</span>
-                </label>
+                <select name="txt_gender">
+                    <option <?php if($gender === "0"){ echo"selected='selected'";}?> value="0">Man</option>
+                    <option <?php if($gender === "1"){ echo"selected='selected'";}?> value="1">Vrouw</option>
+                    <option <?php if($gender === "2"){ echo"selected='selected'";}?> value="2">Apache Helicopter</option>
+                    <option <?php if($gender === "3"){ echo"selected='selected'";}?> value="3">Privé</option>
+                </select>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1" disabled name="txt_register" value="<?php echo $registerdate; ?>">
                     <label class="mdl-textfield__label" for="sample1">Registratiedatum</label>
