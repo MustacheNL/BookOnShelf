@@ -14,6 +14,7 @@ $stmt->execute(array(":user_id" => $user_id));
 
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $street = $row['street'];
+    $housenumber = $row['housenumber'];
     $zipcode = $row['zipcode'];
     $city = $row['city'];
     $country = $row['country'];
@@ -21,16 +22,12 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $rank = $row['rank'];
 }
 include 'includes/menu.inc.php';
-print_r($_POST);
-if (isset($_POST['btn-chef'])) {
-    if ($street == $row['street']) {
-        echo "nyma";
+if (isset($_POST['btn-submit'])) {
+    $stmt = $auth_user->runQuery("UPDATE users SET `street` = :street, `housenumber` = :housenumber, `zipcode` = :zipcode, `city` = :city, `country` = :country WHERE `user_id` = :user_id");
+    $stmt->execute(array(':street' => $_POST['txt_street'], ':housenumber' => $_POST['txt_housenumber'], ':zipcode' => $_POST['txt_zipcode'], ':city' => $_POST['txt_city'], ':country' => $_POST['txt_country'], ':user_id' => $user_id));
     } else {
-        echo "bram";
+       // error[4] = XD;
     }
-} else {
-    echo "jurgen";
-}
 ?>
 <main class="mdl-layout__content" style="margin: auto;">
     <?php //include_once ("includes/check.inc.php"); ?>
@@ -43,32 +40,48 @@ if (isset($_POST['btn-chef'])) {
         <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <form method="post" class="form-signin">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample1">
-                    <label class="mdl-textfield__label" for="sample1"><?php echo $street; ?></label>
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street" value="<?php echo $street; ?>">
+                    <label class="mdl-textfield__label" for="sample1">Straat</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street">
-                    <label class="mdl-textfield__label" for="sample1"><?php echo $zipcode; ?></label>
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_housenumber" value="<?php echo $housenumber; ?>">
+                    <label class="mdl-textfield__label" for="sample1">Huisnummer</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street">
-                    <label class="mdl-textfield__label" for="sample1"><?php echo $city; ?></label>
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_zipcode" value="<?php echo $zipcode; ?>">
+                    <label class="mdl-textfield__label" for="sample1">Postcode</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street">
-                    <label class="mdl-textfield__label" for="sample1"><?php echo $country; ?></label>
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_city" value="<?php echo $city; ?>">
+                    <label class="mdl-textfield__label" for="sample1">Stad</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street">
-                    <label class="mdl-textfield__label" for="sample1"><?php echo $registerdate; ?></label>
+                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_country" value="<?php echo $country; ?>">
+                    <label class="mdl-textfield__label" for="sample1">Land</label>
                 </div>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-0">
+                    <input type="radio" id="option-0" class="mdl-radio__button" name="options" value="0">
+                    <span class="mdl-radio__label">Man</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                    <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1">
+                    <span class="mdl-radio__label">Vrouw</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                    <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
+                    <span class="mdl-radio__label">Apache Helicopter</span>
+                </label>
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                    <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="3">
+                    <span class="mdl-radio__label">Privé</span>
+                </label>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street">
-                    <label class="mdl-textfield__label" for="sample1"><?php echo $rank; ?></label>
+                    <input class="mdl-textfield__input" type="text" id="sample1" disabled name="txt_register" value="<?php echo $registerdate; ?>">
+                    <label class="mdl-textfield__label" for="sample1">Registratiedatum</label>
                 </div>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored,  btn-primary"
-                        type="submit" name="btn-chef">
-                    <i class="glyphicon glyphicon-open-file"></i>&nbsp; Submit
+                        type="submit" name="btn-submit">
+                    <i class="glyphicon glyphicon-open-file"></i>Submit
                 </button>
             </form>
         </div>

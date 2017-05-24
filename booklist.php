@@ -1,9 +1,9 @@
 <?php
 require_once("classes/session.class.php");
 require_once('classes/user.class.php');
-$servername = "145.129.251.239";
+$servername = "localhost";
 $username = "root";
-$password = "Welkom01";
+$password = "";
 $auth_user = new USER();
 $user_id = $_SESSION['user_session'];
 $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
