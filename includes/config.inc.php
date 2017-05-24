@@ -4,10 +4,10 @@ if(stristr($_SERVER['REQUEST_URI'], 'config.inc.php')){
 }
 
 class Database {
-    private $host = "145.129.251.239";
+    private $host = "localhost";
     private $db_name = "bookonshelf";
     private $username = "root";
-    private $password = "Welkom01";
+    private $password = "poep";
     public $conn;
 
     public function dbConnection() {
