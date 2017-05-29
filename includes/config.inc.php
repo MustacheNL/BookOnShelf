@@ -7,7 +7,7 @@ class Database {
     private $host = "localhost";
     private $db_name = "bookonshelf";
     private $username = "root";
-    private $password = "poep";
+    private $password = "";
     public $conn;
 
     public function dbConnection() {
