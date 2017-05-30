@@ -21,10 +21,7 @@ if (isset($_POST['login'])) {
 include 'includes/menu.inc.php';
 ?>
     <main class="mdl-layout__content" style="margin: auto;">
-        <span class="mdl-chip mdl-chip--contact">
-            <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
-            <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem te kunnen gebruiken verzoek wij je <a href='settings.php'>hier</a> alles in te vullen.</span>
-        </span>
+        <?php include_once("includes/check.inc.php"); ?>
         <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 Here must come some shit.

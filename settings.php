@@ -8,10 +8,8 @@ $stmt->execute(array(":user_id" => $user_id));
 $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 $pagename = "Instellingen";
 include "includes/header.inc.php";
-
 $result = $stmt = $auth_user->runQuery("SELECT * FROM users WHERE user_id=:user_id");
 $stmt->execute(array(":user_id" => $user_id));
-
 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $street = $row['street'];
     $housenumber = $row['housenumber'];
@@ -28,7 +26,9 @@ if (isset($_POST['btn-submit'])) {
         $error[] = "Je straat mag geen nummers bevatten!";
     } elseif (!ctype_digit($_POST['txt_housenumber'])) {
         $error[] = "Je huisnummer moet wel nummers bevatten!";
-    } else {
+    }/* elseif() {
+        $error[] = "";
+    } */else {
         $stmt = $auth_user->runQuery("UPDATE users SET `street` = :street, `housenumber` = :housenumber, `zipcode` = :zipcode, `city` = :city, `country` = :country, `gender` = :gender WHERE `user_id` = :user_id");
         $stmt->execute(array(':street' => $_POST['txt_street'], ':housenumber' => $_POST['txt_housenumber'], ':zipcode' => $_POST['txt_zipcode'], ':city' => $_POST['txt_city'], ':country' => $_POST['txt_country'], ':gender' => $_POST['txt_gender'], ':user_id' => $user_id));
         header("Location: /settings.php");
@@ -36,26 +36,21 @@ if (isset($_POST['btn-submit'])) {
 }
 ?>
 <main class="mdl-layout__content" style="margin: auto;">
-    <?php //include_once ("includes/check.inc.php"); ?>
-    <span class="mdl-chip mdl-chip--contact">
-            <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
-                        <span class="mdl-chip__text" style="text-align: center">Let op: We hebben nog niet alle informatie over je gekregen! Om het systeem volledig te kunnen gebruiken verzoeken wij je de benodigde informatie <a
-                                    href='settings.php'>hier</a> in te vullen</span>
-        </span>
-    <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
+    <?php include_once("includes/check.inc.php"); ?>
+        <main class="mdl-layout__content mdl-color--grey-100" style="display: block;">
         <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <?php
-            if (isset($error)) {
-                foreach ($error as $error) {
-                    ?>
-                    <span class="mdl-chip mdl-chip--contact">
+            <form method="post" class="form-signin">
+                <?php
+                if (isset($error)) {
+                    foreach ($error as $error) {
+                        ?>
+                        <span class="mdl-chip mdl-chip--contact">
                                 <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">!</span>
                                 <span class="mdl-chip__text"><?php echo $error; ?></span>
                             </span>
-                    <?php
-                }
-            } ?>
-            <form method="post" class="form-signin">
+                        <?php
+                    }
+                } ?>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" id="sample1" name="txt_street"
                            value="<?php echo $street; ?>">
